@@ -1,0 +1,138 @@
+{
+  "project_name": "Suposhan Sakhi Digital Flipbook",
+  "design_philosophy": {
+    "identity": "The Anti-AI Designer (E1) - Context: Rural Health Education",
+    "core_values": [
+      "Cultural Authenticity: Warm, earthy, relatable to rural Maharashtra.",
+      "Accessibility First: High contrast, large touch targets for tablet use in sunlight.",
+      "Clarity over Style: The message (nutrition) is life-saving; design must not distract."
+    ],
+    "emotional_tone": "Trustworthy, Maternal, Grounded, Empowering"
+  },
+  "color_system": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#C05621",
+        "foreground": "#FFFFFF",
+        "description": "Deep Earth Orange / Terracotta - Represents soil, warmth, home."
+      },
+      "secondary": {
+        "DEFAULT": "#556B2F",
+        "foreground": "#FFFFFF",
+        "description": "Dark Olive Green - Represents nutrition, vegetables, growth."
+      },
+      "background": {
+        "DEFAULT": "#FDFBF7",
+        "paper": "#F5F5F0",
+        "description": "Warm Off-White / Paper - Reduces glare compared to pure white."
+      },
+      "text": {
+        "DEFAULT": "#2D241E",
+        "muted": "#5C544E",
+        "description": "Dark Warm Brown - Softer and more natural than pure black."
+      },
+      "accent": {
+        "DEFAULT": "#ECB939",
+        "foreground": "#2D241E",
+        "description": "Harvest Gold - For highlights and key actions."
+      }
+    },
+    "gradients": {
+      "warm_earth": "linear-gradient(135deg, #C05621 0%, #D97706 100%)",
+      "subtle_paper": "linear-gradient(to bottom, #FDFBF7, #F5F5F0)"
+    }
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Merriweather, serif",
+      "body": "Nunito, sans-serif"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl font-bold tracking-tight text-[#2D241E]",
+      "h2": "text-3xl md:text-4xl font-bold text-[#2D241E]",
+      "h3": "text-2xl font-semibold text-[#C05621]",
+      "body_lg": "text-lg md:text-xl leading-relaxed text-[#2D241E]",
+      "body_base": "text-base md:text-lg leading-relaxed text-[#4A4238]",
+      "caption": "text-sm text-[#5C544E] italic"
+    },
+    "rules": "Headings must use the Serif font to convey authority and tradition. Body text must be Sans-serif for maximum legibility on low-res tablet screens."
+  },
+  "layout_strategy": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing": "Relaxed. Use p-6 or p-8 for cards to allow thumb-safe interaction areas.",
+    "modes": {
+      "landing": "Hero section with warm illustration, clear 'Start' CTA, 3-column download grid.",
+      "viewer": "Focused single-card view. Dominant 'Next/Prev' controls. Toggle switch for Family/Sakhi side."
+    }
+  },
+  "components": {
+    "FlipbookViewer": {
+      "path": "/src/components/FlipbookViewer.js",
+      "description": "The core experience. Displays one spread at a time.",
+      "interactions": [
+        "Swipe left/right to change pages (mobile/tablet).",
+        "Tap 'Flip' button to rotate card from Image (Family) to Text (Sakhi).",
+        "Progress bar at bottom indicating page 1/24."
+      ],
+      "style": "bg-white shadow-xl rounded-xl border border-[#E5E0D8] overflow-hidden aspect-[3/4] md:aspect-[4/3] relative"
+    },
+    "DownloadCard": {
+      "path": "/src/components/DownloadCard.js",
+      "description": "Card for downloading PDF versions.",
+      "style": "bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-[#C05621]",
+      "elements": "Icon (PDF), Title (e.g., 'Full Flipbook'), Size Label, 'Download' Button."
+    },
+    "Navigation": {
+      "style": "Fixed bottom bar on mobile, floating side arrows on desktop. Large touch targets (min 48px)."
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "hero",
+        "url": "https://images.unsplash.com/photo-1708593343442-7595427ddf7b",
+        "alt": "Community women sitting in circle",
+        "usage": "Landing page hero background or main visual"
+      },
+      {
+        "category": "context",
+        "url": "https://images.unsplash.com/photo-1677132529121-3ea5b62ac9b5",
+        "alt": "Women cooking traditional food",
+        "usage": "About section or Nutrition context"
+      },
+      {
+        "category": "placeholder_family",
+        "url": "https://images.unsplash.com/photo-1598623451525-3c9f58a9d140",
+        "alt": "Rural family scene",
+        "usage": "Placeholder for Family Side illustrations"
+      },
+      {
+        "category": "placeholder_sakhi",
+        "url": "https://images.unsplash.com/photo-1709532389095-d86c10c2c187",
+        "alt": "Sakhi teaching scene",
+        "usage": "Placeholder for Sakhi Side counseling text background"
+      }
+    ],
+    "icons": "Use 'lucide-react'. Key icons: BookOpen, Download, ChevronLeft, ChevronRight, RotateCcw (for flip), Users (Family), UserCheck (Sakhi)."
+  },
+  "accessibility_checklist": [
+    "Contrast Ratio: Ensure text is #2D241E on #FDFBF7 (approx 15:1 ratio).",
+    "Touch Targets: All buttons must be at least 44x44px.",
+    "Alt Text: All flipbook images must have descriptive alt text for screen readers.",
+    "No reliance on color alone: Use text labels alongside icons (e.g., 'Download PDF' not just an icon)."
+  ],
+  "instructions_to_main_agent": [
+    "1. Setup Shadcn UI but customize the `radius` to `0.75rem` (rounded-xl) for a softer, friendlier look.",
+    "2. Install `framer-motion` for the card flip animation. It is critical for the 'Front/Back' experience.",
+    "3. Create a data file `src/data/flipbookContent.js` to hold the content for 24 pages (mock data for now).",
+    "4. Use the specified Earthy Color Palette. Do NOT use default Tailwind blues or grays.",
+    "5. Ensure the 'Download' section is prominent on the landing page, as users might just want the PDF.",
+    "6. For the Viewer: Implement a 'Flashcard' component that has a `isFlipped` state."
+  ],
+  "universal_guidelines": [
+    "Don't make generic centered layouts.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Micro-animations for every interaction (hover, press).",
+    "Never use pure black (#000000). Use the defined dark brown/grey."
+  ]
+}
