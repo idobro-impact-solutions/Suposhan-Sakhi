@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCcw, Download } from 'lucide-react';
 import { flipbookData } from '../data/flipbookContent';
+import html2canvas from 'html2canvas';
 
 export const FlipbookViewer = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  
+  const familyCardRef = useRef(null);
+  const sakhiCardRef = useRef(null);
 
   const currentSpread = flipbookData[currentPage];
 
@@ -25,6 +30,48 @@ export const FlipbookViewer = () => {
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
+  };
+
+  const downloadCurrentPage = async () => {
+    setIsDownloading(true);
+    try {
+      const elementToCapture = isFlipped ? sakhiCardRef.current : familyCardRef.current;
+      
+      if (!elementToCapture) {
+        alert('Unable to capture page. Please try again.');
+        setIsDownloading(false);
+        return;
+      }
+
+      const canvas = await html2canvas(elementToCapture, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#FDFBF7',
+        logging: false,
+        imageTimeout: 0,
+        removeContainer: true,
+        windowWidth: elementToCapture.scrollWidth,
+        windowHeight: elementToCapture.scrollHeight
+      });
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const side = isFlipped ? 'Sakhi' : 'Family';
+          link.download = `Suposhan_Page_${String(currentPage + 1).padStart(2, '0')}_${side}.png`;
+          link.href = url;
+          link.click();
+          URL.revokeObjectURL(url);
+        }
+        setIsDownloading(false);
+      }, 'image/png', 1.0);
+    } catch (error) {
+      console.error('Error downloading page:', error);
+      alert('Error downloading page. Please try again.');
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -50,6 +97,20 @@ export const FlipbookViewer = () => {
         </div>
       </div>
 
+      {/* Download Button for Current Page */}
+      <div className="mb-4 flex justify-end">
+        <button
+          onClick={downloadCurrentPage}
+          disabled={isDownloading}
+          className="flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50"
+          style={{ backgroundColor: '#556B2F', color: 'white' }}
+          data-testid="download-current-page"
+        >
+          <Download size={20} />
+          {isDownloading ? 'Downloading...' : `Download This ${isFlipped ? 'Sakhi' : 'Family'} Page`}
+        </button>
+      </div>
+
       {/* Flipbook Card */}
       <div className="relative" style={{ perspective: '1500px', minHeight: '600px' }}>
         <AnimatePresence mode="wait">
@@ -67,6 +128,7 @@ export const FlipbookViewer = () => {
           >
             {/* Family Side (Front) */}
             <div
+              ref={familyCardRef}
               style={{
                 position: 'absolute',
                 width: '100%',
@@ -81,6 +143,7 @@ export const FlipbookViewer = () => {
                   src={currentSpread.familySide.imageUrl}
                   alt={`Page ${currentPage + 1} - Family Side`}
                   className="w-full h-full object-cover"
+                  crossOrigin="anonymous"
                   data-testid={`family-side-image-${currentPage + 1}`}
                 />
                 <div className="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-black/50 to-transparent">
@@ -98,6 +161,7 @@ export const FlipbookViewer = () => {
 
             {/* Sakhi Side (Back) */}
             <div
+              ref={sakhiCardRef}
               style={{
                 position: 'absolute',
                 width: '100%',
@@ -110,21 +174,29 @@ export const FlipbookViewer = () => {
               className="rounded-xl shadow-2xl overflow-hidden border p-8 md:p-12"
             >
               <div className="h-full overflow-y-auto" data-testid={`sakhi-side-content-${currentPage + 1}`}>
-                <h2 className="text-3xl font-bold mb-6" style={{ color: '#C05621', fontFamily: 'Merriweather, serif' }}>
+                {/* Header Bar */}
+                <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: '#C05621' }}>
+                  <h3 className="text-white font-bold text-center" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                    Suposhan Sakhi - Nutrition Counseling Guide | Page {currentPage + 1} of {flipbookData.length}
+                  </h3>
+                </div>
+
+                <h2 className="text-3xl font-bold mb-4" style={{ color: '#C05621', fontFamily: 'Merriweather, serif' }}>
                   {currentSpread.sakhiSide.title}
                 </h2>
+                <div className="w-full h-1 mb-6 rounded" style={{ backgroundColor: '#ECB939' }} />
 
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-lg font-semibold mb-2" style={{ color: '#556B2F', fontFamily: 'Nunito, sans-serif' }}>
-                      Key Information
+                      Key Information:
                     </h3>
                     <p className="leading-relaxed" style={{ color: '#2D241E', fontFamily: 'Nunito, sans-serif', fontSize: '1.05rem' }}>
                       {currentSpread.sakhiSide.body}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: '#F5F5F0', borderLeft: '4px solid #ECB939' }}>
+                  <div className="p-4 rounded-lg border-l-4" style={{ backgroundColor: '#FFF8E1', borderColor: '#ECB939' }}>
                     <h3 className="text-lg font-semibold mb-2" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
                       Ask:
                     </h3>
@@ -141,6 +213,13 @@ export const FlipbookViewer = () => {
                       {currentSpread.sakhiSide.action}
                     </p>
                   </div>
+                </div>
+
+                {/* Footer */}
+                <div className="mt-6 p-3 rounded" style={{ backgroundColor: '#F5F5F0' }}>
+                  <p className="text-xs text-center italic" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
+                    Britannia Nutrition Foundation & Idobro Impact Solutions © 2026
+                  </p>
                 </div>
               </div>
             </div>
