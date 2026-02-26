@@ -3,7 +3,7 @@ export const flipbookData = [
   {
     id: 1,
     familySide: {
-      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ec7a9182f79f5f930027506584f7744710449f79c850ae92db5a48ebe6a18785.png",
+      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/c81194ea3247ed8253b162db3a2f71dff8b6bf33870dd3b64a2d7aea903a4365.png",
       headline: "Suposhan Sakhi | Nutrition Journey - With Family",
       subtitle: "Your guide to raising a healthy and happy child together"
     },
