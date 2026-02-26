@@ -273,7 +273,8 @@ export const generateFamilyPagesPDF = async () => {
   const pdf = new jsPDF({
     orientation: 'landscape',
     unit: 'mm',
-    format: 'a4'
+    format: 'a4',
+    compress: true
   });
 
   let isFirstPage = true;
@@ -285,46 +286,55 @@ export const generateFamilyPagesPDF = async () => {
     isFirstPage = false;
 
     try {
-      const familyImg = await loadImage(spread.familySide.imageUrl);
-      pdf.addImage(familyImg, 'PNG', 0, 0, 297, 210);
+      const familyImg = await loadImageWithCORS(spread.familySide.imageUrl);
+      pdf.addImage(familyImg, 'JPEG', 0, 0, 297, 210);
       
-      // Add text overlay
+      // Add semi-transparent overlay for text readability
+      pdf.setFillColor(0, 0, 0);
+      pdf.setGState(new pdf.GState({opacity: 0.5}));
+      pdf.rect(0, 0, 297, 70, 'F');
+      pdf.setGState(new pdf.GState({opacity: 1}));
+      
+      // Add headline text
+      pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(20);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(spread.familySide.headline, 15, 30, { maxWidth: 260 });
+      const headlineLines = pdf.splitTextToSize(spread.familySide.headline, 260);
+      pdf.text(headlineLines, 15, 25);
       
-      // Add page number
+      // Add page number at bottom
+      pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(10);
-      pdf.text(`Page ${i + 1} - Family Side`, 15, 200);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(`Page ${i + 1} of ${flipbookData.length} - Family Side`, 15, 200);
     } catch (error) {
       console.error(`Error loading image for page ${i + 1}:`, error);
+      // Fallback if image fails
       pdf.setFillColor(253, 251, 247);
       pdf.rect(0, 0, 297, 210, 'F');
-      pdf.setFontSize(16);
+      
+      // Header bar
+      pdf.setFillColor(192, 86, 33);
+      pdf.rect(0, 0, 297, 15, 'F');
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text('Suposhan Sakhi - Family Side', 15, 10);
+      
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(18);
       pdf.setTextColor(192, 86, 33);
-      pdf.text(`Page ${i + 1} - Family Side`, 15, 30);
+      pdf.text(`Page ${i + 1} - Family Side`, 15, 35);
+      
+      pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(14);
       pdf.setTextColor(45, 36, 30);
-      pdf.text(spread.familySide.headline, 15, 50, { maxWidth: 260 });
+      const headlineLines = pdf.splitTextToSize(spread.familySide.headline, 260);
+      pdf.text(headlineLines, 15, 55);
     }
   }
 
   pdf.save('Suposhan_Sakhi_Family_Pages.pdf');
 };
 
-const loadImage = (url) => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
-    };
-    img.onerror = reject;
-    img.src = url;
-  });
-};
+// Remove old loadImage function and keep only the new one at the end
