@@ -87,16 +87,6 @@ export const FlipbookViewer = () => {
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Merriweather, serif' }}>
                     {currentSpread.familySide.headline}
                   </h2>
-                  {currentSpread.familySide.translation && (
-                    <p className="text-base text-white/90" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                      {currentSpread.familySide.translation}
-                    </p>
-                  )}
-                  {currentSpread.familySide.subline && (
-                    <p className="text-base text-white/90" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                      {currentSpread.familySide.subline}
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
