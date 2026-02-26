@@ -22,9 +22,10 @@ export const generateFullFlipbookPDF = async () => {
       pdf.addImage(familyImg, 'PNG', 0, 0, 297, 210);
       
       // Add text overlay
-      pdf.setFontSize(20);
+      pdf.setFontSize(18);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(spread.familySide.headline, 15, 30, { maxWidth: 260 });
+      const headlineLines = pdf.splitTextToSize(spread.familySide.headline, 260);
+      pdf.text(headlineLines, 15, 30);
     } catch (error) {
       console.error(`Error loading image for page ${i + 1}:`, error);
       pdf.setFontSize(16);
@@ -39,38 +40,39 @@ export const generateFullFlipbookPDF = async () => {
     pdf.rect(0, 0, 297, 210, 'F');
     
     // Title
-    pdf.setFontSize(18);
+    pdf.setFontSize(16);
     pdf.setTextColor(192, 86, 33);
-    pdf.text(spread.sakhiSide.title, 15, 25, { maxWidth: 260 });
+    const titleLines = pdf.splitTextToSize(spread.sakhiSide.title, 260);
+    pdf.text(titleLines, 15, 25);
     
     // Body
-    pdf.setFontSize(11);
+    pdf.setFontSize(10);
     pdf.setTextColor(45, 36, 30);
     const bodyLines = pdf.splitTextToSize(spread.sakhiSide.body, 260);
     pdf.text(bodyLines, 15, 45);
     
     // Ask section
-    const askY = 45 + (bodyLines.length * 6);
+    const askY = Math.min(45 + (bodyLines.length * 5), 150);
     pdf.setFillColor(245, 245, 240);
-    pdf.rect(15, askY, 267, 25, 'F');
-    pdf.setFontSize(12);
+    pdf.rect(15, askY, 267, 20, 'F');
+    pdf.setFontSize(11);
     pdf.setTextColor(192, 86, 33);
-    pdf.text('Ask:', 20, askY + 8);
-    pdf.setFontSize(10);
+    pdf.text('Ask:', 20, askY + 7);
+    pdf.setFontSize(9);
     pdf.setTextColor(45, 36, 30);
     const askLines = pdf.splitTextToSize(spread.sakhiSide.ask, 250);
-    pdf.text(askLines, 20, askY + 15);
+    pdf.text(askLines, 20, askY + 13);
     
     // Action section
-    const actionY = askY + 30;
+    const actionY = Math.min(askY + 25, 175);
     pdf.setFillColor(85, 107, 47);
-    pdf.rect(15, actionY, 267, 25, 'F');
-    pdf.setFontSize(12);
+    pdf.rect(15, actionY, 267, 20, 'F');
+    pdf.setFontSize(11);
     pdf.setTextColor(255, 255, 255);
-    pdf.text('Action:', 20, actionY + 8);
-    pdf.setFontSize(10);
+    pdf.text('Action:', 20, actionY + 7);
+    pdf.setFontSize(9);
     const actionLines = pdf.splitTextToSize(spread.sakhiSide.action, 250);
-    pdf.text(actionLines, 20, actionY + 15);
+    pdf.text(actionLines, 20, actionY + 13);
   }
 
   pdf.save('Suposhan_Sakhi_Full_Flipbook.pdf');
