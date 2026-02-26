@@ -172,7 +172,8 @@ export const generateSakhiPagesPDF = async () => {
   const pdf = new jsPDF({
     orientation: 'landscape',
     unit: 'mm',
-    format: 'a4'
+    format: 'a4',
+    compress: true
   });
 
   let isFirstPage = true;
@@ -187,45 +188,82 @@ export const generateSakhiPagesPDF = async () => {
     pdf.setFillColor(253, 251, 247);
     pdf.rect(0, 0, 297, 210, 'F');
     
-    // Title
-    pdf.setFontSize(16);
+    // Header bar
+    pdf.setFillColor(192, 86, 33);
+    pdf.rect(0, 0, 297, 15, 'F');
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(10);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text('Suposhan Sakhi - Nutrition Counseling Guide', 15, 10);
+    pdf.text(`Page ${i + 1} of ${flipbookData.length}`, 250, 10);
+    
+    // Title section with underline
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(18);
     pdf.setTextColor(192, 86, 33);
     const titleLines = pdf.splitTextToSize(spread.sakhiSide.title, 260);
-    pdf.text(titleLines, 15, 25);
+    pdf.text(titleLines, 15, 28);
+    const titleHeight = titleLines.length * 7;
+    pdf.setDrawColor(236, 185, 57);
+    pdf.setLineWidth(1);
+    pdf.line(15, 28 + titleHeight, 280, 28 + titleHeight);
     
-    // Body
+    // Key Information label
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(11);
+    pdf.setTextColor(85, 107, 47);
+    pdf.text('Key Information:', 15, 28 + titleHeight + 10);
+    
+    // Body text with better spacing
+    pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(10);
     pdf.setTextColor(45, 36, 30);
     const bodyLines = pdf.splitTextToSize(spread.sakhiSide.body, 260);
-    pdf.text(bodyLines, 15, 45);
+    const maxBodyLines = Math.min(bodyLines.length, 20);
+    pdf.text(bodyLines.slice(0, maxBodyLines), 15, 28 + titleHeight + 18);
     
-    // Ask section
-    const askY = Math.min(45 + (bodyLines.length * 5), 150);
-    pdf.setFillColor(245, 245, 240);
-    pdf.rect(15, askY, 267, 20, 'F');
-    pdf.setFontSize(11);
+    // Ask section with icon-style design
+    const askY = Math.min(28 + titleHeight + 18 + (maxBodyLines * 5), 130);
+    
+    // Ask box with border
+    pdf.setFillColor(255, 250, 240);
+    pdf.setDrawColor(236, 185, 57);
+    pdf.setLineWidth(0.5);
+    pdf.roundedRect(15, askY, 130, 35, 2, 2, 'FD');
+    
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(12);
     pdf.setTextColor(192, 86, 33);
-    pdf.text('Ask:', 20, askY + 7);
+    pdf.text('💬 Ask:', 20, askY + 7);
+    
+    pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(9);
     pdf.setTextColor(45, 36, 30);
-    const askLines = pdf.splitTextToSize(spread.sakhiSide.ask, 250);
-    pdf.text(askLines, 20, askY + 13);
+    const askLines = pdf.splitTextToSize(spread.sakhiSide.ask, 115);
+    pdf.text(askLines.slice(0, 5), 20, askY + 14);
     
-    // Action section
-    const actionY = Math.min(askY + 25, 175);
+    // Action section with icon-style design
     pdf.setFillColor(85, 107, 47);
-    pdf.rect(15, actionY, 267, 20, 'F');
-    pdf.setFontSize(11);
-    pdf.setTextColor(255, 255, 255);
-    pdf.text('Action:', 20, actionY + 7);
-    pdf.setFontSize(9);
-    const actionLines = pdf.splitTextToSize(spread.sakhiSide.action, 250);
-    pdf.text(actionLines, 20, actionY + 13);
+    pdf.setDrawColor(85, 107, 47);
+    pdf.roundedRect(150, askY, 130, 35, 2, 2, 'FD');
     
-    // Page number
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(12);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text('✓ Action:', 155, askY + 7);
+    
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(9);
+    const actionLines = pdf.splitTextToSize(spread.sakhiSide.action, 115);
+    pdf.text(actionLines.slice(0, 5), 155, askY + 14);
+    
+    // Footer
+    pdf.setFillColor(245, 245, 240);
+    pdf.rect(0, 195, 297, 15, 'F');
+    pdf.setFont('helvetica', 'italic');
     pdf.setFontSize(8);
     pdf.setTextColor(92, 84, 78);
-    pdf.text(`Page ${i + 1} - Sakhi Side`, 15, 200);
+    pdf.text('Britannia Nutrition Foundation & Idobro Impact Solutions © 2026', 15, 203);
   }
 
   pdf.save('Suposhan_Sakhi_Sakhi_Pages.pdf');
