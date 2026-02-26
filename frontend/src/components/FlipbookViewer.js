@@ -32,8 +32,10 @@ export const FlipbookViewer = () => {
     setIsFlipped(!isFlipped);
   };
 
+  // ---------- REPLACED FUNCTION (only this changed) ----------
   const downloadCurrentPage = async () => {
     setIsDownloading(true);
+
     try {
       const elementToCapture = isFlipped ? sakhiCardRef.current : familyCardRef.current;
       
@@ -43,45 +45,50 @@ export const FlipbookViewer = () => {
         return;
       }
 
-      // Remove any transforms temporarily for capture
-      const originalTransform = elementToCapture.style.transform;
-      const originalParentTransform = elementToCapture.parentElement?.style.transform;
-      
-      elementToCapture.style.transform = 'none';
-      if (elementToCapture.parentElement) {
-        elementToCapture.parentElement.style.transform = 'none';
+      // Ensure fonts are loaded
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
       }
+
+      // Find the motion wrapper (the 3D-preserve container) and temporarily remove its transform
+      // We look for an ancestor that has preserve-3d in its inline style (the motion.div sets transformStyle: 'preserve-3d')
+      const motionWrapper = elementToCapture.closest('[style*="preserve-3d"]');
+
+      let originalWrapperTransform;
+      if (motionWrapper) {
+        originalWrapperTransform = motionWrapper.style.transform;
+        motionWrapper.style.transform = 'none';
+      }
+
+      // Temporarily remove transform from the element itself (e.g., rotateY(180deg) on Sakhi)
+      const originalTransform = elementToCapture.style.transform;
+      elementToCapture.style.transform = 'none';
 
       // Wait for images to load
       const images = elementToCapture.querySelectorAll('img');
       await Promise.all(
         Array.from(images).map(img => {
           if (img.complete) return Promise.resolve();
-          return new Promise((resolve) => {
+          return new Promise(resolve => {
             img.onload = resolve;
             img.onerror = resolve;
           });
         })
       );
 
-      // Small delay to ensure rendering
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Tiny delay to ensure browser painted after removing transforms
+      await new Promise(resolve => setTimeout(resolve, 300));
 
       const canvas = await html2canvas(elementToCapture, {
         scale: 2,
-        useCORS: false,
-        allowTaint: true,
-        backgroundColor: isFlipped ? '#FDFBF7' : null,
-        logging: false,
-        imageTimeout: 0,
-        removeContainer: false,
-        foreignObjectRendering: false
+        backgroundColor: '#FDFBF7',
+        useCORS: true
       });
 
       // Restore transforms
       elementToCapture.style.transform = originalTransform;
-      if (elementToCapture.parentElement) {
-        elementToCapture.parentElement.style.transform = originalParentTransform;
+      if (motionWrapper) {
+        motionWrapper.style.transform = originalWrapperTransform;
       }
 
       canvas.toBlob((blob) => {
@@ -102,6 +109,7 @@ export const FlipbookViewer = () => {
       setIsDownloading(false);
     }
   };
+  // -------------------------------------------------------------
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8">
