@@ -211,9 +211,13 @@ const Home = () => {
 
           {isGenerating && (
             <div className="text-center mt-8">
-              <div className="inline-block p-4 rounded-lg" style={{ backgroundColor: 'white' }}>
-                <p className="text-lg font-semibold" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
-                  Generating PDF... Please wait
+              <div className="inline-block p-6 rounded-lg shadow-lg" style={{ backgroundColor: 'white' }}>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-4 mx-auto mb-4" style={{ borderColor: '#C05621' }}></div>
+                <p className="text-lg font-semibold mb-2" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
+                  Generating PDF...
+                </p>
+                <p className="text-sm" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
+                  Please wait while we prepare your download
                 </p>
               </div>
             </div>
