@@ -1,17 +1,16 @@
-// Flipbook content data for all 24 spreads
+// Flipbook content data for all 24 spreads - English Only Version
 export const flipbookData = [
   {
     id: 1,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ec7a9182f79f5f930027506584f7744710449f79c850ae92db5a48ebe6a18785.png",
-      headline: "सुपोषण सखी / Suposhan Sakhi",
-      subline: "पोषण परामर्श मार्गदर्शक / Nutrition Counseling Guide"
+      headline: "Suposhan Sakhi - Nutrition Journey With Family"
     },
     sakhiSide: {
-      title: "Welcome & How to Use This Flipbook",
-      body: "This flipbook is your companion for nutrition counseling with mothers in your village. Each spread has a family-facing image (front) and counseling prompts (back - this side). Show the family-facing side to mothers while you read the Sakhi side.",
-      ask: "Have you worked with families on nutrition before? What challenges do you face in counseling?",
-      action: "Identify 5 families with children under 2 years to visit this week"
+      title: "Welcome Sakhi!",
+      body: "This flipbook is your tool for nutrition counseling with families in your community. 24 important topics covering Breastfeeding (0-6 months exclusive, correct techniques), Complementary Feeding (Starting at 6 months, texture progression), Malnutrition Identification (SAM/MAM recognition), Maternal Nutrition (During pregnancy and breastfeeding), and Hygiene & Health practices.",
+      ask: "What are your main concerns about nutrition counseling? What support do you need from your family for this work?",
+      action: "Today, identify 2-3 families with children under 2 years to visit this week"
     }
   },
   {
