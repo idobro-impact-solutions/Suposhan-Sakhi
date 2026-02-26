@@ -86,10 +86,10 @@ const Home = () => {
               </div>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Merriweather, serif' }}>
-              सुपोषण सखी
+              Suposhan Sakhi
             </h1>
             <p className="text-2xl md:text-3xl mb-4" style={{ fontFamily: 'Nunito, sans-serif' }}>
-              Suposhan Sakhi Digital Flipbook
+              Digital Flipbook for Nutrition Counseling
             </p>
             <p className="text-lg md:text-xl mb-8 opacity-90" style={{ fontFamily: 'Nunito, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
               A comprehensive nutrition counseling guide for community health workers serving rural Maharashtra families.
