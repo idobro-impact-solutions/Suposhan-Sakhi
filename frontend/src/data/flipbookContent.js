@@ -1,10 +1,11 @@
-// Flipbook content data for all 24 spreads - English Only Version
+// Flipbook content data for all 24 spreads - Complete with all subtitles
 export const flipbookData = [
   {
     id: 1,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ec7a9182f79f5f930027506584f7744710449f79c850ae92db5a48ebe6a18785.png",
-      headline: "Suposhan Sakhi - Nutrition Journey With Family"
+      headline: "Suposhan Sakhi | Nutrition Journey - With Family",
+      subtitle: "Your guide to raising a healthy and happy child together"
     },
     sakhiSide: {
       title: "Welcome Sakhi!",
@@ -31,7 +32,8 @@ export const flipbookData = [
     id: 3,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/3f558f594559aa6c621ba6c5a9ff816b0cd2cc1d2d80dc52303cc5a140d8ea79.png",
-      headline: "Correct Way: Chin Touching Breast, Lips Flanged Out"
+      headline: "Correct Way: Chin Touching Breast, Lips Flanged Out",
+      subtitle: "A good latch prevents pain and ensures your baby gets enough milk"
     },
     sakhiSide: {
       title: "Correct Breastfeeding Technique",
@@ -44,7 +46,8 @@ export const flipbookData = [
     id: 4,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/6034616d4a7b6eeb1da56ac1fe1e09ffb24d0d15da2e7690eb512ee275be4e57.png",
-      headline: "Try Different Positions - Comfort is Important"
+      headline: "Try Different Positions - Comfort is Important",
+      subtitle: "Find a holding technique that works best for you and your baby"
     },
     sakhiSide: {
       title: "Breastfeeding Positions",
@@ -57,7 +60,8 @@ export const flipbookData = [
     id: 5,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/8207319346ef1f299d54c7f3a234a15f1b8140c557ff59d6a96322abbdf14fd1.png",
-      headline: "Start Breastfeeding Within 1 Hour of Birth - Golden Hour"
+      headline: "Start Breastfeeding Within 1 Hour of Birth - Golden Hour",
+      subtitle: "Skin-to-skin contact and the first yellow milk protect your newborn"
     },
     sakhiSide: {
       title: "Golden Hour - First Hour After Birth",
@@ -70,7 +74,8 @@ export const flipbookData = [
     id: 6,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/a021b16dfc7352ceb7a91fb939cbcf5b4a759deab29ee21b3cbe9ef724ab97ee.png",
-      headline: "Problems Are Common - Solutions Exist Too"
+      headline: "Problems Are Common - Solutions Exist Too",
+      subtitle: "Do not stop feeding; seek help for sore nipples or milk supply worries"
     },
     sakhiSide: {
       title: "Breastfeeding Problems & Solutions",
@@ -83,7 +88,8 @@ export const flipbookData = [
     id: 7,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/dad9d1bc03796cc8384b20f188886ad2d4888a6c69d12df3d2739e1d9921037e.png",
-      headline: "Going to Work? Express and Store Milk"
+      headline: "Going to Work? Express and Store Milk",
+      subtitle: "Keep breastfeeding by storing milk and feeding with a small cup"
     },
     sakhiSide: {
       title: "Working Mothers - Expressing Milk",
@@ -96,7 +102,8 @@ export const flipbookData = [
     id: 8,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/cfe082692cb5f7f88be9348eebff31535456194a40a33623ea869d30988b2818.png",
-      headline: "Start Home Food After 6 Months Complete"
+      headline: "Start Home Food After 6 Months Complete",
+      subtitle: "Introduce mashed family foods while continuing to breastfeed"
     },
     sakhiSide: {
       title: "Starting Complementary Foods - 6 Months",
@@ -109,7 +116,8 @@ export const flipbookData = [
     id: 9,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ab966b7b22a18d694431c5153d55dc587f99849c8358b4de43c5fd2a6bcc8881.png",
-      headline: "Change Food Texture With Age"
+      headline: "Change Food Texture With Age",
+      subtitle: "Move from smooth purees to soft lumps, and then to finger foods"
     },
     sakhiSide: {
       title: "Food Texture - Changes by Age",
@@ -122,7 +130,8 @@ export const flipbookData = [
     id: 10,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/b3ee8d116c05b6141935c364c42668062a4eec55eea12e184a763b83f918f426.png",
-      headline: "Give Different Foods Daily - Colorful Plate"
+      headline: "Give Different Foods Daily - Colorful Plate",
+      subtitle: "Include cereals, pulses, vegetables, and fats in every meal"
     },
     sakhiSide: {
       title: "Nutrient-Dense Diverse Foods",
@@ -135,7 +144,8 @@ export const flipbookData = [
     id: 11,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/5c39faef084b07caecaa9a457846f2d67ef15469cd13961dd3b40f143a9b4cc1.png",
-      headline: "Feed With Love, Not Force"
+      headline: "Feed With Love, Not Force",
+      subtitle: "Watch for hunger signs and avoid screen distractions during mealtimes"
     },
     sakhiSide: {
       title: "Responsive Feeding",
@@ -148,7 +158,8 @@ export const flipbookData = [
     id: 12,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/1a74e98b7a79ee4c5bee4b47e22206c9c32bc5c7d68bf57fb99f5a28f0c17939.png",
-      headline: "Iron-Rich Foods Daily - Prevent Anemia"
+      headline: "Iron-Rich Foods Daily - Prevent Anemia",
+      subtitle: "Dark greens, dal, and eggs keep your child energetic and strong"
     },
     sakhiSide: {
       title: "Iron-Rich Foods & Anemia Prevention",
@@ -161,7 +172,8 @@ export const flipbookData = [
     id: 13,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/c3f611fbbbdc90adc353f757a4cf39e72c40296c3eeddd4f73c02e02975acbc2.png",
-      headline: "MUAC Measurement - Identify Malnutrition"
+      headline: "MUAC Measurement - Identify Malnutrition",
+      subtitle: "A quick monthly tape check to track your child's health and growth"
     },
     sakhiSide: {
       title: "MUAC Measurement - Identifying Malnutrition",
@@ -174,7 +186,8 @@ export const flipbookData = [
     id: 14,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/7ea240646a0aadd32ac94c111d8370170a1adf9495318451713c3f58bb25589e.png",
-      headline: "Identify Severe Malnutrition - Refer to Hospital Immediately"
+      headline: "Identify Severe Malnutrition - Refer to Hospital Immediately",
+      subtitle: "A red MUAC zone or swollen feet is a medical emergency requiring free care"
     },
     sakhiSide: {
       title: "SAM Identification & Referral",
@@ -187,7 +200,8 @@ export const flipbookData = [
     id: 15,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/4ec746107e75b2a436a8f44860d04e2b02320091d9147e5640fa91dff102b15a.png",
-      headline: "Moderate Malnutrition - Increase Nutritious Food at Home"
+      headline: "Moderate Malnutrition - Increase Nutritious Food at Home",
+      subtitle: "Prevent severe malnutrition with extra meals, added ghee, and dense nutrients"
     },
     sakhiSide: {
       title: "MAM Management at Home",
@@ -200,7 +214,8 @@ export const flipbookData = [
     id: 16,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/31044c7e81a3bab31be4c98d0ffc665ca34e2f3f0520c7305c494eae9ee0f616.png",
-      headline: "Pregnant Woman Needs Extra Food"
+      headline: "Pregnant Woman Needs Extra Food",
+      subtitle: "Eat one extra meal and take IFA tablets daily for a healthy baby"
     },
     sakhiSide: {
       title: "Nutrition During Pregnancy",
@@ -213,7 +228,8 @@ export const flipbookData = [
     id: 17,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/00a4f97ae3004445d28f38963ccbff3f546a8fc609ebc85107d824a13967d354.png",
-      headline: "Breastfeeding Mother Needs Extra Nutrition Too"
+      headline: "Extra Food for the Breastfeeding Mother",
+      subtitle: "Consume more calories and fluids to support steady milk production"
     },
     sakhiSide: {
       title: "Nutrition for Lactating Mothers",
@@ -226,7 +242,8 @@ export const flipbookData = [
     id: 18,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/2007aab7a2ccda74de27a50e855bd35e6d52c6d6c58cee176bf83606cb8155ea.png",
-      headline: "IFA Tablets - Baby's Health in Your Hands"
+      headline: "Protect Your Health with Iron and Calcium",
+      subtitle: "Continue taking your tablets for 180 days after delivery to rebuild strength"
     },
     sakhiSide: {
       title: "IFA Tablets for Pregnant Women",
@@ -239,7 +256,8 @@ export const flipbookData = [
     id: 19,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/47497d37f745107e93484ac813690326ea62a5580b69e4b3180448218ea474a3.png",
-      headline: "More Energy, More Nutrients - Best for Growth"
+      headline: "Feed More When Your Child is Sick",
+      subtitle: "Offer soft foods frequently and add extra meals during recovery"
     },
     sakhiSide: {
       title: "Dietary Diversity & Energy Density",
@@ -251,21 +269,9 @@ export const flipbookData = [
   {
     id: 20,
     familySide: {
-      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/83d91c465952b7c10bdc0a13692aae430e7da761473b20dad00b63e3253afdbe.png",
-      headline: "Correct Feeding - Healthy Baby"
-    },
-    sakhiSide: {
-      title: "IYCF Practices - Infant Young Child Feeding",
-      body: "Proper feeding from birth vital for healthy growth development survival. Key practices: 1) Immediate and Exclusive Breastfeeding 0-6 months - start within first hour Golden Hour, exclusive breastfeeding ONLY breast milk no water formula other liquids, feed on demand at least 8-12 times in 24 hours including night, provides all nutrients hydration antibodies. 2) Continued Breastfeeding with Complementary Foods 6-24 months - start complementary at 6 months ALONGSIDE continued breastfeeding, breastfeed on demand at least 5-7 times daily until 2 years or beyond, appropriate foods start smooth thick purees gradually increase texture, nutrient-dense energy-dense protein-rich diverse micronutrients add ghee oil, frequency 6-8 months 2-3 meals, 9-11 months 3-4 meals plus 1-2 snacks, 12-24 months 3-4 meals plus 1-2 snacks. 3) Responsive Feeding - pay attention to hunger fullness signals, encourage don't force, minimize distractions, make positive experience. 4) Food Safety Hygiene - wash hands, clean utensils, fresh food.",
-      ask: "How old is baby now? When did you start breastfeeding? Are you breastfeeding exclusively? If 6 months plus what foods giving? How many times breastfeed in 24 hours? How many meals of complementary food? Do you chase baby with food or use TV/phone? Do you wash hands before preparing food? Are utensils clean?",
-      action: "If baby under 6 months: Continue exclusive breastfeeding, feed on demand including night. If 6+ months: Offer complementary foods 2-3 times a day start 2-3 spoons, continue breastfeeding on demand. Practice responsive feeding: watch cues, no forcing, no distractions. Ensure hygiene: wash hands before preparing and feeding"
-    }
-  },
-  {
-    id: 21,
-    familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/a46930cd975fda49e0b22c8fd7bb759c6020b8c7b14aa7bb688fcbf68f37ae5f.png",
-      headline: "Wash Hands with Soap - Prevent Illness"
+      headline: "Wash Hands with Soap to Stop Disease",
+      subtitle: "Always wash before cooking, eating, feeding, and after using the toilet"
     },
     sakhiSide: {
       title: "Handwashing with Soap",
@@ -275,10 +281,11 @@ export const flipbookData = [
     }
   },
   {
-    id: 22,
+    id: 21,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/80fd46f28fd273508454bed755aab8da358409a6ee13eb5d771ef7b02460b0e8.png",
-      headline: "Clean Food - Healthy Family"
+      headline: "Clean Food Keeps Your Baby Healthy",
+      subtitle: "Cook thoroughly, serve warm, and safely cover all stored leftovers"
     },
     sakhiSide: {
       title: "Safe Food Preparation & Storage",
@@ -288,10 +295,25 @@ export const flipbookData = [
     }
   },
   {
+    id: 22,
+    familySide: {
+      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/83d91c465952b7c10bdc0a13692aae430e7da761473b20dad00b63e3253afdbe.png",
+      headline: "Keep Play Areas Clean and Safe",
+      subtitle: "Filter drinking water and protect your home from animal waste"
+    },
+    sakhiSide: {
+      title: "Household Hygiene & Sanitation",
+      body: "Household hygiene crucial for preventing infections especially in young children who crawl play on floors put objects in mouth. Areas to focus: Water safety - filter or boil drinking water, store in clean covered container with narrow mouth, use clean cup or ladle not hands, clean water storage containers weekly. Toilet sanitation - use toilet or designated area away from home, never defecate in open, keep toilet clean, dispose child feces in toilet not open. Living areas - sweep and mop floors daily especially where children play, keep kitchen clean free of food scraps, dispose garbage properly in covered bin empty daily. Animal control - keep animals especially chickens goats out of living and cooking areas, wash hands after touching animals, keep animal waste away from play areas. Play areas - wash toys and play items regularly, keep play area clean and dry, prevent children from eating dirt or putting dirty objects in mouth. Pest control - keep food covered to prevent flies cockroaches, use mosquito nets prevent mosquito bites. During illness - separate sick child's utensils and clothes, wash with hot water and soap, air and sun dry everything, clean surfaces with diluted bleach if available.",
+      ask: "How do you treat drinking water before giving to children? Where does family defecate - toilet or open? Do you have animals at home? Do they come inside house? How often do you clean floors where baby plays? Do you have separate area for garbage?",
+      action: "Filter or boil ALL drinking water for children from today. If defecating in open: Use toilet or dig pit far from home. Keep animals out of kitchen and living areas. Sweep and mop play areas daily. Wash child's toys with soap and water this week"
+    }
+  },
+  {
     id: 23,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ae50682c4cdb0c864eb89d50039a1fc85cbdaf9b12ab01f299453ce7c6c9a65d.png",
-      headline: "Identify Danger Signs - Go to Doctor Immediately"
+      headline: "Know the Danger Signs - Act Fast",
+      subtitle: "Seek a doctor immediately for extreme lethargy, fast breathing, or persistent vomiting"
     },
     sakhiSide: {
       title: "Recognizing Danger Signs",
@@ -303,8 +325,9 @@ export const flipbookData = [
   {
     id: 24,
     familySide: {
-      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/83d91c465952b7c10bdc0a13692aae430e7da761473b20dad00b63e3253afdbe.png",
-      headline: "Thank You! Healthy Children, Strong Community"
+      imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/ae50682c4cdb0c864eb89d50039a1fc85cbdaf9b12ab01f299453ce7c6c9a65d.png",
+      headline: "Thank You for Prioritizing Your Child's Health",
+      subtitle: "Stay connected with your Anganwadi and ASHA workers for continued support"
     },
     sakhiSide: {
       title: "Thank You & Key Contacts",
