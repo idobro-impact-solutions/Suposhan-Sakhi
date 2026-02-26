@@ -215,6 +215,7 @@ export const FlipbookViewer = () => {
             </div>
 
             {/* Sakhi Side (Back) */}
+                        {/* Sakhi Side (Back) */}
             <div
               ref={sakhiCardRef}
               style={{
@@ -226,50 +227,61 @@ export const FlipbookViewer = () => {
                 transform: 'rotateY(180deg)',
                 backgroundColor: '#FDFBF7',
               }}
-              className="rounded-xl shadow-2xl overflow-hidden border p-8 md:p-12"
+              className="rounded-xl shadow-2xl overflow-hidden border p-6 md:p-8"
             >
               <div className="h-full overflow-y-auto" data-testid={`sakhi-side-content-${currentPage + 1}`}>
                 {/* Header Bar */}
-                <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: '#C05621' }}>
-                  <h3 className="text-white font-bold text-center" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                <div className="mb-4 p-2 md:p-3 rounded-lg" style={{ backgroundColor: '#C05621' }}>
+                  <h3 className="text-white font-bold text-center text-sm md:text-base" style={{ fontFamily: 'Nunito, sans-serif' }}>
                     Suposhan Sakhi - Nutrition Counseling Guide | Page {currentPage + 1} of {flipbookData.length}
                   </h3>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4" style={{ color: '#C05621', fontFamily: 'Merriweather, serif' }}>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#C05621', fontFamily: 'Merriweather, serif' }}>
                   {currentSpread.sakhiSide.title}
                 </h2>
-                <div className="w-full h-1 mb-6 rounded" style={{ backgroundColor: '#ECB939' }} />
+                <div className="w-full h-1 mb-4 rounded" style={{ backgroundColor: '#ECB939' }} />
 
-                <div className="space-y-6">
+                <div className="space-y-3 md:space-y-4">
                   <div>
-                    <h3 className="text-lg font-semibold mb-2" style={{ color: '#556B2F', fontFamily: 'Nunito, sans-serif' }}>
+                    <h3 className="text-base md:text-lg font-semibold mb-1" style={{ color: '#556B2F', fontFamily: 'Nunito, sans-serif' }}>
                       Key Information:
                     </h3>
-                    <p className="leading-relaxed" style={{ color: '#2D241E', fontFamily: 'Nunito, sans-serif', fontSize: '1.05rem' }}>
+                    <p className="leading-snug md:leading-relaxed" style={{ color: '#2D241E', fontFamily: 'Nunito, sans-serif', fontSize: '1.05rem' }}>
                       {currentSpread.sakhiSide.body}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg border-l-4" style={{ backgroundColor: '#FFF8E1', borderColor: '#ECB939' }}>
-                    <h3 className="text-lg font-semibold mb-2" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
+                  <div className="p-3 rounded-lg border-l-4" style={{ backgroundColor: '#FFF8E1', borderColor: '#ECB939' }}>
+                    <h3 className="text-base md:text-lg font-semibold mb-1" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
                       Ask:
                     </h3>
-                    <p className="leading-relaxed" style={{ color: '#2D241E', fontFamily: 'Nunito, sans-serif' }}>
+                    <p className="leading-snug md:leading-relaxed" style={{ color: '#2D241E', fontFamily: 'Nunito, sans-serif' }}>
                       {currentSpread.sakhiSide.ask}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: '#556B2F', color: 'white' }}>
-                    <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: '#556B2F', color: 'white' }}>
+                    <h3 className="text-base md:text-lg font-semibold mb-1" style={{ fontFamily: 'Nunito, sans-serif' }}>
                       Action:
                     </h3>
-                    <p className="leading-relaxed" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                    <p className="leading-snug md:leading-relaxed" style={{ fontFamily: 'Nunito, sans-serif' }}>
                       {currentSpread.sakhiSide.action}
                     </p>
                   </div>
                 </div>
 
+                {/* Footer */}
+                <div className="mt-4 p-2 rounded" style={{ backgroundColor: '#F5F5F0' }}>
+                  <p className="text-xs text-center italic" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
+                    Britannia Nutrition Foundation & Idobro Impact Solutions © 2026
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
                 {/* Footer */}
                 <div className="mt-6 p-3 rounded" style={{ backgroundColor: '#F5F5F0' }}>
                   <p className="text-xs text-center italic" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
