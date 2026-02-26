@@ -1,40 +1,14 @@
 import React, { useState } from 'react';
 import '@/App.css';
 import { FlipbookViewer } from './components/FlipbookViewer';
-import { DownloadCard } from './components/DownloadCard';
 import { BookOpen, Users, UserCheck } from 'lucide-react';
 import { flipbookData } from './data/flipbookContent';
-import { downloadFamilyPagesZip, downloadSakhiPagesZip, downloadCompleteFlipbookZip } from './utils/simpleDownloader';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
   const [showViewer, setShowViewer] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [progress, setProgress] = useState('');
-
-  const handleDownload = async (type) => {
-    setIsGenerating(true);
-    
-    try {
-      if (type === 'full') {
-        await downloadCompleteFlipbookZip((msg) => setProgress(msg));
-      } else if (type === 'sakhi') {
-        await downloadSakhiPagesZip((msg) => setProgress(msg));
-      } else if (type === 'family') {
-        await downloadFamilyPagesZip((msg) => setProgress(msg));
-      }
-      
-      setTimeout(() => setProgress(''), 2000);
-    } catch (error) {
-      console.error('Error generating download:', error);
-      alert('Error generating download. Please try again.');
-      setProgress('');
-    } finally {
-      setIsGenerating(false);
-    }
-  };
 
   if (showViewer) {
     return (
