@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '@/App.css';
 import { FlipbookViewer } from './components/FlipbookViewer';
 import { DownloadCard } from './components/DownloadCard';
-import { generateFullFlipbookPDF, generateSakhiPagesPDF, generateFamilyPagesPDF } from './utils/pdfGenerator';
-import { BookOpen, Users, UserCheck, Download } from 'lucide-react';
+import { downloadFamilyPagesZip, downloadSakhiPagesZip, downloadCompleteFlipbookZip, capturePage } from './utils/imageDownloader';
+import { BookOpen, Users, UserCheck } from 'lucide-react';
 import { flipbookData } from './data/flipbookContent';
+import html2canvas from 'html2canvas';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
