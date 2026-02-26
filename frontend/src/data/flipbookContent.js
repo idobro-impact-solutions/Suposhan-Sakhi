@@ -17,7 +17,8 @@ export const flipbookData = [
     id: 2,
     familySide: {
       imageUrl: "https://static.prod-images.emergentagent.com/jobs/afd4ce5d-989b-4d1d-8898-5c0e31899f19/images/7bf9bb86c365a6dc34fbd94a11d21dcf24de7df5b7310eaa540e33cae7e738d7.png",
-      headline: "0-6 Months: Only Breast Milk - Not Even Water"
+      headline: "0-6 Months: Only Breast Milk - Not Even Water",
+      subtitle: "No water • No other liquids • Feed 8-12 times daily"
     },
     sakhiSide: {
       title: "Only Breast Milk 0-6 Months",
