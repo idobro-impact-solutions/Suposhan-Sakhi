@@ -69,8 +69,8 @@ export const FlipbookViewer = () => {
 
       const canvas = await html2canvas(elementToCapture, {
         scale: 2,
-        useCORS: true,
-        allowTaint: false,
+        useCORS: false,
+        allowTaint: true,
         backgroundColor: isFlipped ? '#FDFBF7' : null,
         logging: false,
         imageTimeout: 0,
