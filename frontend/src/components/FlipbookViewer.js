@@ -43,17 +43,46 @@ export const FlipbookViewer = () => {
         return;
       }
 
+      // Remove any transforms temporarily for capture
+      const originalTransform = elementToCapture.style.transform;
+      const originalParentTransform = elementToCapture.parentElement?.style.transform;
+      
+      elementToCapture.style.transform = 'none';
+      if (elementToCapture.parentElement) {
+        elementToCapture.parentElement.style.transform = 'none';
+      }
+
+      // Wait for images to load
+      const images = elementToCapture.querySelectorAll('img');
+      await Promise.all(
+        Array.from(images).map(img => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        })
+      );
+
+      // Small delay to ensure rendering
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       const canvas = await html2canvas(elementToCapture, {
         scale: 2,
         useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#FDFBF7',
+        allowTaint: false,
+        backgroundColor: isFlipped ? '#FDFBF7' : null,
         logging: false,
         imageTimeout: 0,
-        removeContainer: true,
-        windowWidth: elementToCapture.scrollWidth,
-        windowHeight: elementToCapture.scrollHeight
+        removeContainer: false,
+        foreignObjectRendering: false
       });
+
+      // Restore transforms
+      elementToCapture.style.transform = originalTransform;
+      if (elementToCapture.parentElement) {
+        elementToCapture.parentElement.style.transform = originalParentTransform;
+      }
 
       canvas.toBlob((blob) => {
         if (blob) {
