@@ -23,9 +23,10 @@ const Home = () => {
       } else if (type === 'family') {
         await generateFamilyPagesPDF();
       }
+      // Success message could be added here
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
+      alert('Error generating PDF. This may be due to image loading issues. Please try again or contact support.');
     } finally {
       setIsGenerating(false);
     }
