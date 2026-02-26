@@ -170,50 +170,46 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#2D241E', fontFamily: 'Merriweather, serif' }}>
-              Download High-Quality Images
+              Download Individual Pages
             </h2>
             <p className="text-lg" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
-              Download all pages as high-quality PNG images (ZIP format)
+              View the flipbook and download each page individually using the download button on each page
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <DownloadCard
-              title="Full Flipbook"
-              description="Complete flipbook with both Family-facing images and Sakhi counseling pages as high-quality images."
-              pageCount="48 images"
-              onDownload={() => handleDownload('full')}
-              icon={BookOpen}
-            />
-            <DownloadCard
-              title="Sakhi Pages Only"
-              description="Counseling guide pages with Ask & Action prompts - perfect for training community health workers."
-              pageCount="24 images"
-              onDownload={() => handleDownload('sakhi')}
-              icon={UserCheck}
-            />
-            <DownloadCard
-              title="Family Pages Only"
-              description="Family-facing illustration pages with key nutrition messages - ideal for printing and distribution."
-              pageCount="24 images"
-              onDownload={() => handleDownload('family')}
-              icon={Users}
-            />
-          </div>
-
-          {isGenerating && (
-            <div className="text-center mt-8">
-              <div className="inline-block p-6 rounded-lg shadow-lg" style={{ backgroundColor: 'white' }}>
-                <div className="animate-spin rounded-full h-12 w-12 border-b-4 mx-auto mb-4" style={{ borderColor: '#C05621' }}></div>
-                <p className="text-lg font-semibold mb-2" style={{ color: '#C05621', fontFamily: 'Nunito, sans-serif' }}>
-                  {progress}
-                </p>
-                <p className="text-sm" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
-                  This may take a few moments...
-                </p>
-              </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+            <div className="inline-flex p-4 rounded-full mb-4" style={{ backgroundColor: '#F5F5F0' }}>
+              <BookOpen size={48} style={{ color: '#C05621' }} />
             </div>
-          )}
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#2D241E', fontFamily: 'Merriweather, serif' }}>
+              How to Download Pages
+            </h3>
+            <ol className="text-left max-w-2xl mx-auto space-y-3" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
+              <li className="flex items-start gap-3">
+                <span className="font-bold" style={{ color: '#C05621' }}>1.</span>
+                <span>Click "Start Viewing Flipbook" above to open the flipbook viewer</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="font-bold" style={{ color: '#C05621' }}>2.</span>
+                <span>Navigate to the page you want to download using Previous/Next buttons</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="font-bold" style={{ color: '#C05621' }}>3.</span>
+                <span>Use the "Flip" button to switch between Family side (visual) and Sakhi side (counseling)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="font-bold" style={{ color: '#C05621' }}>4.</span>
+                <span>Click the "Download This Page" button to save the current page as a high-quality PNG image</span>
+              </li>
+            </ol>
+            <button
+              onClick={() => setShowViewer(true)}
+              className="mt-6 px-8 py-3 rounded-lg font-bold transition-all duration-200 shadow-md hover:shadow-lg"
+              style={{ backgroundColor: '#C05621', color: 'white' }}
+            >
+              Start Viewing & Downloading
+            </button>
+          </div>
         </div>
       </section>
 
