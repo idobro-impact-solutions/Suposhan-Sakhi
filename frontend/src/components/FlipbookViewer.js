@@ -172,13 +172,8 @@ export const FlipbookViewer = () => {
                   src={currentSpread.familySide.imageUrl}
                   alt={`Page ${currentPage + 1} - Family Side`}
                   className="w-full h-full object-cover"
-                  crossOrigin="anonymous"
                   loading="eager"
                   data-testid={`family-side-image-${currentPage + 1}`}
-                  onError={(e) => {
-                    console.error('Image failed to load:', e.target.src);
-                    e.target.style.backgroundColor = '#f0f0f0';
-                  }}
                 />
                 <div className="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-black/50 to-transparent">
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Merriweather, serif' }}>
