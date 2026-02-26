@@ -32,7 +32,6 @@ export const FlipbookViewer = () => {
     setIsFlipped(!isFlipped);
   };
 
-  // ----------------- REPLACED downloadCurrentPage -----------------
   const downloadCurrentPage = async () => {
     setIsDownloading(true);
 
@@ -127,7 +126,6 @@ export const FlipbookViewer = () => {
       setIsDownloading(false);
     }
   };
-  // ----------------------------------------------------------------
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8">
@@ -215,7 +213,6 @@ export const FlipbookViewer = () => {
             </div>
 
             {/* Sakhi Side (Back) */}
-                        {/* Sakhi Side (Back) */}
             <div
               ref={sakhiCardRef}
               style={{
@@ -273,17 +270,6 @@ export const FlipbookViewer = () => {
 
                 {/* Footer */}
                 <div className="mt-4 p-2 rounded" style={{ backgroundColor: '#F5F5F0' }}>
-                  <p className="text-xs text-center italic" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
-                    Britannia Nutrition Foundation & Idobro Impact Solutions © 2026
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-                {/* Footer */}
-                <div className="mt-6 p-3 rounded" style={{ backgroundColor: '#F5F5F0' }}>
                   <p className="text-xs text-center italic" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
                     Britannia Nutrition Foundation & Idobro Impact Solutions © 2026
                   </p>
