@@ -32,64 +32,82 @@ export const FlipbookViewer = () => {
     setIsFlipped(!isFlipped);
   };
 
-  // ---------- REPLACED FUNCTION (only this changed) ----------
+  // ----------------- REPLACED downloadCurrentPage -----------------
   const downloadCurrentPage = async () => {
     setIsDownloading(true);
 
     try {
-      const elementToCapture = isFlipped ? sakhiCardRef.current : familyCardRef.current;
-      
-      if (!elementToCapture) {
+      const sourceElement = isFlipped ? sakhiCardRef.current : familyCardRef.current;
+
+      if (!sourceElement) {
         alert('Unable to capture page. Please try again.');
         setIsDownloading(false);
         return;
       }
 
-      // Ensure fonts are loaded
+      // create off-screen container sized to the source element
+      const container = document.createElement('div');
+      container.style.position = 'fixed';
+      container.style.left = '-9999px';
+      container.style.top = '0';
+      container.style.width = `${sourceElement.offsetWidth}px`;
+      container.style.height = `${sourceElement.offsetHeight}px`;
+      container.style.background = isFlipped ? '#FDFBF7' : 'transparent';
+      container.style.overflow = 'hidden';
+      container.style.margin = '0';
+      container.style.padding = '0';
+
+      // deep clone the node so we do not affect live DOM
+      const clone = sourceElement.cloneNode(true);
+
+      // Force-remove transforms from clone root and make it relative
+      clone.style.transform = 'none';
+      clone.style.backfaceVisibility = 'visible';
+      clone.style.position = 'relative';
+      clone.style.left = '0';
+      clone.style.top = '0';
+      clone.style.width = '100%';
+      clone.style.height = '100%';
+
+      // Remove transforms/backface from all descendant nodes (important to neutralize rotateY inheritance)
+      clone.querySelectorAll('*').forEach((el) => {
+        // override with inline styles so CSS classes won't reintroduce transforms
+        el.style.transform = 'none';
+        el.style.backfaceVisibility = 'visible';
+      });
+
+      container.appendChild(clone);
+      document.body.appendChild(container);
+
+      // wait for fonts to be ready (prevents text-shift in capture)
       if (document.fonts && document.fonts.ready) {
         await document.fonts.ready;
       }
 
-      // Find the motion wrapper (the 3D-preserve container) and temporarily remove its transform
-      // We look for an ancestor that has preserve-3d in its inline style (the motion.div sets transformStyle: 'preserve-3d')
-      const motionWrapper = elementToCapture.closest('[style*="preserve-3d"]');
-
-      let originalWrapperTransform;
-      if (motionWrapper) {
-        originalWrapperTransform = motionWrapper.style.transform;
-        motionWrapper.style.transform = 'none';
-      }
-
-      // Temporarily remove transform from the element itself (e.g., rotateY(180deg) on Sakhi)
-      const originalTransform = elementToCapture.style.transform;
-      elementToCapture.style.transform = 'none';
-
-      // Wait for images to load
-      const images = elementToCapture.querySelectorAll('img');
+      // Wait for all images in the clone to finish loading (or error)
+      const images = clone.querySelectorAll('img');
       await Promise.all(
-        Array.from(images).map(img => {
+        Array.from(images).map((img) => {
           if (img.complete) return Promise.resolve();
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             img.onload = resolve;
             img.onerror = resolve;
           });
         })
       );
 
-      // Tiny delay to ensure browser painted after removing transforms
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // slight delay to ensure browser painted after mutation
+      await new Promise((resolve) => setTimeout(resolve, 250));
 
-      const canvas = await html2canvas(elementToCapture, {
+      const canvas = await html2canvas(container, {
         scale: 2,
-        backgroundColor: '#FDFBF7',
-        useCORS: true
+        useCORS: true,                // ask html2canvas to try CORS-enabled fetching
+        backgroundColor: isFlipped ? '#FDFBF7' : null,
+        logging: false,
       });
 
-      // Restore transforms
-      elementToCapture.style.transform = originalTransform;
-      if (motionWrapper) {
-        motionWrapper.style.transform = originalWrapperTransform;
-      }
+      // remove offscreen container
+      document.body.removeChild(container);
 
       canvas.toBlob((blob) => {
         if (blob) {
@@ -103,13 +121,13 @@ export const FlipbookViewer = () => {
         }
         setIsDownloading(false);
       }, 'image/png', 1.0);
-    } catch (error) {
-      console.error('Error downloading page:', error);
+    } catch (err) {
+      console.error('Error downloading page:', err);
       alert('Error downloading page. Please try again.');
       setIsDownloading(false);
     }
   };
-  // -------------------------------------------------------------
+  // ----------------------------------------------------------------
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-8">
