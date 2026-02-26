@@ -46,10 +46,10 @@ const Home = () => {
                 <BookOpen size={32} />
                 <div>
                   <h1 className="text-2xl font-bold" style={{ fontFamily: 'Merriweather, serif', color: '#2D241E' }}>
-                    सुपोषण सखी
+                    Suposhan Sakhi
                   </h1>
                   <p className="text-sm" style={{ color: '#5C544E', fontFamily: 'Nunito, sans-serif' }}>
-                    Suposhan Sakhi Flipbook
+                    Nutrition Counseling Flipbook
                   </p>
                 </div>
               </button>
