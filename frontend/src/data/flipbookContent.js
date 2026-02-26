@@ -45,7 +45,7 @@ export const flipbookData = [
   {
     id: 4,
     familySide: {
-      imageUrl: "/Spread 4.png",
+      imageUrl: "/Spread 4.jpg",
       headline: "Try Different Positions - Comfort is Important",
       subtitle: "Find a holding technique that works best for you and your baby"
     },
@@ -59,7 +59,7 @@ export const flipbookData = [
   {
     id: 5,
     familySide: {
-      imageUrl: "/Spread 5.png",
+      imageUrl: "/Spread 5.jpg",
       headline: "Start Breastfeeding Within 1 Hour of Birth - Golden Hour",
       subtitle: "Skin-to-skin contact and the first yellow milk protect your newborn"
     },
@@ -115,7 +115,7 @@ export const flipbookData = [
   {
     id: 9,
     familySide: {
-      imageUrl: "/Spread 9.png",
+      imageUrl: "/Spread 9.jpg",
       headline: "Change Food Texture With Age",
       subtitle: "Move from smooth purees to soft lumps, and then to finger foods"
     },
@@ -171,7 +171,7 @@ export const flipbookData = [
   {
     id: 13,
     familySide: {
-      imageUrl: "/Spread 13.png",
+      imageUrl: "/Spread 13.jpg",
       headline: "MUAC Measurement - Identify Malnutrition",
       subtitle: "A quick monthly tape check to track your child's health and growth"
     },
@@ -185,7 +185,7 @@ export const flipbookData = [
   {
     id: 14,
     familySide: {
-      imageUrl: "/Spread 14.png",
+      imageUrl: "/Spread 14.jpg",
       headline: "Identify Severe Malnutrition - Refer to Hospital Immediately",
       subtitle: "A red MUAC zone or swollen feet is a medical emergency requiring free care"
     },
@@ -199,7 +199,7 @@ export const flipbookData = [
   {
     id: 15,
     familySide: {
-      imageUrl: "/Spread 15.png",
+      imageUrl: "/Spread 15.jpg",
       headline: "Moderate Malnutrition - Increase Nutritious Food at Home",
       subtitle: "Prevent severe malnutrition with extra meals, added ghee, and dense nutrients"
     },
@@ -213,7 +213,7 @@ export const flipbookData = [
   {
     id: 16,
     familySide: {
-      imageUrl: "/Spread 16.png",
+      imageUrl: "/Spread 16.jpg",
       headline: "Pregnant Woman Needs Extra Food",
       subtitle: "Eat one extra meal and take IFA tablets daily for a healthy baby"
     },
@@ -227,7 +227,7 @@ export const flipbookData = [
   {
     id: 17,
     familySide: {
-      imageUrl: "/Spread 17.png",
+      imageUrl: "/Spread 16.jpg",
       headline: "Extra Food for the Breastfeeding Mother",
       subtitle: "Consume more calories and fluids to support steady milk production"
     },
@@ -241,7 +241,7 @@ export const flipbookData = [
   {
     id: 18,
     familySide: {
-      imageUrl: "/Spread 18.png",
+      imageUrl: "/Spread 18.jpg",
       headline: "Protect Your Health with Iron and Calcium",
       subtitle: "Continue taking your tablets for 180 days after delivery to rebuild strength"
     },
@@ -255,7 +255,7 @@ export const flipbookData = [
   {
     id: 19,
     familySide: {
-      imageUrl: "/Spread 19.png",
+      imageUrl: "/Spread 19.jpg",
       headline: "Feed More When Your Child is Sick",
       subtitle: "Offer soft foods frequently and add extra meals during recovery"
     },
@@ -269,7 +269,7 @@ export const flipbookData = [
   {
     id: 20,
     familySide: {
-      imageUrl: "/Spread 20.png",
+      imageUrl: "/Spread 20.jpg",
       headline: "Wash Hands with Soap to Stop Disease",
       subtitle: "Always wash before cooking, eating, feeding, and after using the toilet"
     },
@@ -311,7 +311,7 @@ export const flipbookData = [
   {
     id: 23,
     familySide: {
-      imageUrl: "/Spread 23.png",
+      imageUrl: "/Spread 23.jpg",
       headline: "Know the Danger Signs - Act Fast",
       subtitle: "Seek a doctor immediately for extreme lethargy, fast breathing, or persistent vomiting"
     },
